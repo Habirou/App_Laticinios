@@ -26,7 +26,7 @@ const QuestionsController = require('../../../modules/controllers/QuestionsContr
 const RespostasController = require('../../../modules/controllers/RespostasController')
 const ResponseImagesController = require('../../../modules/controllers/ResponseImagesController')
 
-const uploadCarImages = multer(uploadConfig.upload("./tmp/responseImages"));
+const uploadResponsesImages = multer(uploadConfig.upload("./tmp/responseImages"));
 
 
 //USER ROUTES
@@ -54,9 +54,9 @@ routes.put("/responses/:responseId", RespostasController.update)
 routes.delete("/responses/:responseId", RespostasController.delete)
 
 //IMAGES OF RESPONSE
-routes.post("/responsesImages/:responseId",
-uploadCarImages.array("images"),
-ResponseImagesController.create)
+// Ao fazer o upload, o label dos arquivos deve ter o mesmo Nome que esse objeto 
+// recebido pela funcao array
+routes.post("/responsesImages/:responseId", uploadResponsesImages.array("images"), ResponseImagesController.create)
 
 
 

@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import express from 'express';
-import cors from "cors";
+
 const routes = require("../routes")
 
-//import "@shared/infra/knex/connection";
+
 
 const app = express();
-app.use(express.json());
+
+
 app.use(routes);
 
 //app.use(cors());
