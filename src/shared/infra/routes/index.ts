@@ -29,6 +29,12 @@ const ResponseImagesController = require('../../../modules/controllers/ResponseI
 const uploadResponsesImages = multer(uploadConfig.upload("./tmp/responseImages"));
 
 
+//LOGINS ROUTES
+routes.get("/login", LoginController.index)
+routes.post("/login", LoginController.create) 
+routes.put("/login/:loginId", LoginController.update)
+routes.delete("/login/:loginId", LoginController.delete)
+
 //USER ROUTES
 routes.get("/users", UserController.index)
 routes.post("/users/:loginId", UserController.create)
@@ -66,12 +72,6 @@ routes.post("/address/:userId", AddressController.create)
 routes.put("/address/:addressId", AddressController.update)
 routes.delete("/address/:addressId", AddressController.delete)
 
-
-//LOGINS ROUTES
-routes.get("/login", LoginController.index)
-routes.post("/login", LoginController.create) 
-routes.put("/login/:loginId", LoginController.update)
-routes.delete("/login/:loginId", LoginController.delete)
 
 //TYPE PERSON ROUTES
 routes.get("/typePerson", TypePersonController.index)
@@ -129,7 +129,5 @@ routes.delete("/taxAuditor/:taxAuditorId", TaxAuditorController.delete)
 
 //ROTAS DE LOGIN
 routes.post('/authentication', AuthenticationController.authentication)
-
-//routes.use();
 
 module.exports = routes;
